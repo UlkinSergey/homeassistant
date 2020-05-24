@@ -25,15 +25,6 @@ URL_SERVICE_HASSIO="https://raw.githubusercontent.com/home-assistant/supervised-
 URL_SERVICE_APPARMOR="https://raw.githubusercontent.com/home-assistant/supervised-installer/master/files/hassio-apparmor.service"
 URL_APPARMOR_PROFILE="https://version.home-assistant.io/apparmor.txt"
 
-# Check env
-command -v systemctl > /dev/null 2>&1 || error "Only systemd is supported!"
-command -v docker > /dev/null 2>&1 || error "Please install docker first"
-command -v jq > /dev/null 2>&1 || error "Please install jq first"
-command -v curl > /dev/null 2>&1 || error "Please install curl first"
-command -v dbus-daemon > /dev/null 2>&1 || error "Please install dbus first"
-command -v nmcli > /dev/null 2>&1 || warn "No NetworkManager support on host."
-command -v apparmor_parser > /dev/null 2>&1 || warn "No AppArmor support on host."
-
 
 # Check if Modem Manager is enabled
 if systemctl list-unit-files ModemManager.service | grep enabled; then
